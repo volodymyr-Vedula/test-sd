@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="knockout-3.5.1.js"></script>
+    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="jsScripts.js"></script>
+</head>
+<body>
+<header>
+    <h1>TODO Application</h1>
+</header>
+<div>
+    <input type="text" autofocus placeholder="What to do?" data-bind="textInput:newTaskTitle">
+</div>
+
+<div>
+    <button data-bind="click:addTask">Add task</button>
+</div>
+
+<div>
+    <h3>Tasks</h3>
+    <div>
+        <ul>
+            <li data-bind="foreach:tasks">
+                <label>
+                    <input type="checkbox" data-bind="click:$parent.doneTask">
+                    <span data-bind="text:title">By bread</span>
+                    <a href="#" data-bind="click:$parent.removeTask">
+                        (remove)
+                    </a>
+                </label>
+            </li>
+        </ul>
+        <div data-bind="visible: !tasks().length>0">
+            No tasks. Time to drink beer
+        </div>
+    </div>
+</div>
+
+<div>
+    <h3>Complete tasks</h3>
+    <div>
+        <ul>
+            <li data-bind="foreach:complitedTask">
+                <label>
+                    <span data-bind="text:title">By bread</span>
+                    <a href="#" data-bind="click:$parent.undoTask">
+                        (undo)
+                    </a>
+                </label>
+            </li>
+        </ul>
+        <div data-bind="visible: !complitedTask().length>0">
+            No tasks. Time to work hard
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
